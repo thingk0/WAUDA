@@ -11,12 +11,14 @@
 본 프로젝트는 스프링 프레임워크를 기반으로 제작된 애플리케이션입니다.
 
 * Java 17
-* SpringBoot 2.7.12
+* JDK corretto 17
+* SpringBoot 2.7.12 ver.
 * JPA 'Hibernate'
 * Thymeleaf
 * H2
 * MySQL
-* AWS EC2
+* BootStrap 5.1.3 ver.
+* JQuery 3.7.0 ver.
 
 
 ## 연락처 정보
