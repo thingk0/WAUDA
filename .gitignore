@@ -37,3 +37,10 @@ out/
 .vscode/
 /src/main/resources/application-local.yml
 /src/main/resources/application-test.yml
+/src/main/resources/static/img/ham.svg
+/src/main/resources/static/img/home.svg
+/src/main/resources/static/img/like.svg
+/src/main/resources/static/img/logo.png
+/src/main/resources/static/img/party.svg
+/src/main/resources/static/img/profile.svg
+/src/main/resources/static/img/search.svg
