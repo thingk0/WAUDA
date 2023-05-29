@@ -44,3 +44,4 @@ out/
 /src/main/resources/static/img/party.svg
 /src/main/resources/static/img/profile.svg
 /src/main/resources/static/img/search.svg
+.DS_Store
