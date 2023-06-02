@@ -2,9 +2,8 @@ package com.thingk0.wauda.service;
 
 
 import com.thingk0.wauda.domain.Member;
-import com.thingk0.wauda.dto.MemberRegisterDto;
+import com.thingk0.wauda.dto.RegisterDto;
 import com.thingk0.wauda.repository.MemberRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +34,15 @@ class MemberServiceTest {
     @DisplayName("회원가입 테스트")
     public void registerTest() {
         // given
-        MemberRegisterDto memberRegisterDto = new MemberRegisterDto("member@naver.com", "12341234", "member");
+        RegisterDto registerDto = new RegisterDto("member@naver.com", "12341234", "member");
 
         // when
-        Long savedMemberId = memberService.register(memberRegisterDto);
+        Long savedMemberId = memberService.register(registerDto);
         Member findMemberById = memberRepository.findById(savedMemberId).orElseThrow(() -> new EntityNotFoundException("Not Found"));
 
         // then
-        assertThat(findMemberById.getEmail()).isEqualTo(memberRegisterDto.getEmail());
-        assertThat(passwordEncoder.matches(memberRegisterDto.getPassword(), findMemberById.getPassword())).isTrue();
+        assertThat(findMemberById.getEmail()).isEqualTo(registerDto.getEmail());
+        assertThat(passwordEncoder.matches(registerDto.getPassword(), findMemberById.getPassword())).isTrue();
     }
 
 }
