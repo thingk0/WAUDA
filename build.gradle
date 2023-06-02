@@ -37,6 +37,7 @@ dependencies {
     runtimeOnly 'com.mysql:mysql-connector-j'
     // Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
     // Security
     implementation 'org.springframework.boot:spring-boot-starter-security'
     // Validation
