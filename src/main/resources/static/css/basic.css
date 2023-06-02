@@ -78,3 +78,8 @@ footer {
 .search-input:focus {
     outline: none;
 }
+
+.error {
+    font-size: 0.7em;
+    color: red;
+}

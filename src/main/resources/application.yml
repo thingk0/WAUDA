@@ -11,3 +11,8 @@ spring:
 
   thymeleaf:
     prefix: classpath:/templates/
+
+logging:
+  level:
+    org.springframework.security: ERROR
+    org.springframework.boot.autoconfigure.security: ERROR
