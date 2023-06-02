@@ -6,7 +6,7 @@
             </a>
         </div>
     </div>
-    <div class="container-fluid d-flex justify-content-center mt-4">
+    <div th:if="${showHeader}" class="container-fluid d-flex justify-content-center mt-4">
         <form class="d-flex" style="width: 100%">
             <div class="search-bar">
                 <img class="search-logo" th:src="@{/img/search.svg}" />
