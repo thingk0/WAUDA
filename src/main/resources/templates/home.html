@@ -4,17 +4,17 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layouts/layout}">
 
-<div layout:fragment="content" class="container my-3">
+  <div layout:fragment="content" class="container my-3">
 
-  <div sec:authorize="isAnonymous()">
-    <a th:href="@{/members/login}" class="btn btn-primary">로그인</a>
-  </div>
+    <div sec:authorize="isAnonymous()">
+      <a th:href="@{/members/login}" class="btn btn-primary">로그인</a>
+    </div>
 
-  <div sec:authorize="isAuthenticated()">
-    <form th:action="@{/logout}" method="post">
-      <input type="submit" value="로그아웃" class="btn btn-secondary"/>
-    </form>
+    <div sec:authorize="isAuthenticated()">
+      <form th:action="@{/logout}" method="post">
+        <input type="submit" value="로그아웃" class="btn btn-secondary"/>
+      </form>
+    </div>
   </div>
-</div>
 
 </html>

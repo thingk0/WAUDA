@@ -15,38 +15,7 @@
     <th:block layout:fragment="content"></th:block>
     <footer th:insert="~{layouts/footer :: footer}"></footer>
 
-    <script>
-      function changeButtonStyle(button, url) {
-        let buttons = document.querySelectorAll('.footer-btn');
-
-        buttons.forEach(function(btn, index) {
-          btn.classList.remove('button-blue');
-          if (btn === button) {
-            localStorage.setItem('selectedButtonIndex', index);
-          }
-        });
-
-        button.classList.add('button-blue');
-        window.location.href = url;
-      }
-
-      function setSelectedButtonColor() {
-        let buttonIndex = localStorage.getItem('selectedButtonIndex');
-        let buttons = document.querySelectorAll('.footer-btn');
-
-        if (buttonIndex !== null) {
-          buttons[buttonIndex].classList.add('button-blue');
-        } else {
-          // 로컬 스토리지에 선택한 버튼 인덱스가 없을 경우 첫 번째 버튼 색깔 변경
-          buttons[0].classList.add('button-blue');
-          localStorage.setItem("selectedButtonIndex", 0);
-        }
-      }
-
-      document.addEventListener('DOMContentLoaded', setSelectedButtonColor);
-
-    </script>
-
+    <script type="text/javascript" th:src="@{/js/footer.js}"></script>
     <script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
   </body>
 </html>
