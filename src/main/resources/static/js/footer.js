@@ -4,8 +4,10 @@ function changeButtonStyle(index) {
     buttons.forEach((btn, idx) => {
         if (idx === index) {
             btn.classList.add('button-blue');
+            btn.classList.add('button-border');
         } else {
             btn.classList.remove('button-blue');
+            btn.classList.remove('button-border');
         }
     });
     localStorage.setItem('selectedButtonIndex', index);

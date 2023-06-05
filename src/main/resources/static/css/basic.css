@@ -83,3 +83,15 @@ footer {
     font-size: 0.7em;
     color: red;
 }
+
+.button-border {
+    border: 2px solid blue;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+
+
+
+
+
