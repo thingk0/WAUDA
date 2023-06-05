@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}" >
+
+<div layout:fragment="content" class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
+            <form action="#" th:action="@{/party/create}" th:object="${partyForm}" method="post">
+                <div class="card shadow p-1" style="border-radius: 30px;">
+                    <div class="p-0" style="border-radius: 30px 30px 0 0;">
+                        <div class="text-black text-center py-4">
+                            <h3><i class="fa fa-envelope"></i> 파티 생성 </h3>
+                        </div>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="form-group py-2">
+                            <label class="small" for="category">카테고리</label>
+                            <div class="input-group mb-2">
+                                <select th:field="*{category}" id="category" class="form-control">
+                                    <option th:each="category : ${T(com.thingk0.wauda.domain.constant.Category).values()}"
+                                            th:value="${category}" th:text="${category.getValue()}"
+                                            th:selected="${category == '택시팟'}"></option>
+                                </select>
+                            </div>
+
+                            <p th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="error">Category Error</p>
+                        </div>
+
+                        <div class="form-group py-2">
+                            <label class="small" for="name">파티 이름</label>
+                            <div class="input-group mb-2">
+                                <input type="text" th:field="*{name}" id="name" class="form-control">
+                            </div>
+                            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error">Name Error</p>
+                        </div>
+
+                        <div class="form-group py-2">
+                            <label class="small" for="content">내용</label>
+                            <div class="input-group mb-2">
+                                <textarea th:field="*{content}" id="content" class="form-control"></textarea>
+                            </div>
+                            <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="error">Content Error</p>
+                        </div>
+
+                        <div class="text-center py-3">
+                            <input type="submit" value="완료" class="btn btn-outline-success btn-block rounded-2 py-2" style="width: 60%;">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</html>
