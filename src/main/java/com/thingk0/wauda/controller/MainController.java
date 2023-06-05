@@ -9,8 +9,8 @@ public class MainController {
 
     @GetMapping(value = "/")
     public String mainPage(Model model) {
-        model.addAttribute("showHeader", true);
-        return "home";
+//        model.addAttribute("showHeader", true);
+        return "redirect:/party";
     }
 
 }

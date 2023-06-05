@@ -2,7 +2,7 @@ package com.thingk0.wauda.domain;
 
 import com.thingk0.wauda.domain.base.BaseEntity;
 import com.thingk0.wauda.domain.constant.Role;
-import com.thingk0.wauda.dto.RegisterDto;
+import com.thingk0.wauda.dto.register.RegisterDto;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 

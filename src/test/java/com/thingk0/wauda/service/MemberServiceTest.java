@@ -2,7 +2,7 @@ package com.thingk0.wauda.service;
 
 
 import com.thingk0.wauda.domain.Member;
-import com.thingk0.wauda.dto.RegisterDto;
+import com.thingk0.wauda.dto.register.RegisterDto;
 import com.thingk0.wauda.repository.MemberRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,7 +1,7 @@
 package com.thingk0.wauda.controller;
 
-import com.thingk0.wauda.dto.RegisterDto;
-import com.thingk0.wauda.dto.RegisterForm;
+import com.thingk0.wauda.dto.register.RegisterDto;
+import com.thingk0.wauda.dto.register.RegisterForm;
 import com.thingk0.wauda.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +34,6 @@ public class MemberController {
             log.info("로그인 에러 발생");
         }
 
-        log.info("로그인");
         return "login";
     }
 

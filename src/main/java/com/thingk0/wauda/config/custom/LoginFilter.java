@@ -8,11 +8,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
-    public LoginFilter() {
-        setFilterProcessesUrl("/member/login/process");
-    }
+public class LoginFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {

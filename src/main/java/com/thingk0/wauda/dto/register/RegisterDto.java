@@ -1,4 +1,4 @@
-package com.thingk0.wauda.dto;
+package com.thingk0.wauda.dto.register;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
