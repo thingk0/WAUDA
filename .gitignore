@@ -33,16 +33,16 @@ out/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
+### etc ###
 .vscode/
-/src/main/resources/application-local.yml
-/src/main/resources/application-test.yml
-/src/main/resources/static/img/ham.svg
-/src/main/resources/static/img/home.svg
-/src/main/resources/static/img/like.svg
-/src/main/resources/static/img/logo.png
-/src/main/resources/static/img/party.svg
-/src/main/resources/static/img/profile.svg
-/src/main/resources/static/img/search.svg
 .DS_Store
 /src/main/generated/
+/src/main/resources/application-local.yml
+/src/main/resources/application-test.yml
+/src/main/resources/static/img/home.svg
+/src/main/resources/static/img/logo.png
+/src/main/resources/static/img/user.svg
+/src/main/resources/static/img/users.svg
+/src/main/resources/static/img/add.svg
+/src/main/resources/static/img/heart.svg
+/src/main/resources/static/img/search.svg
