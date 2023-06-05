@@ -7,7 +7,7 @@
         </div>
     </div>
     <div th:if="${showHeader}" class="container-fluid d-flex justify-content-center mt-4">
-        <form class="d-flex" style="width: 100%">
+        <form class="d-flex" action="/party" method="get" style="width: 100%">
             <div class="search-bar">
                 <img class="search-logo" th:src="@{/img/search.svg}" />
                 <input class="search-input" type="text" name="search" placeholder="택시, 밥, 피시방, 카페, 놀이공원 등"/>
