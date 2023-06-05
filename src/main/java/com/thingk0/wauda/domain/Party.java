@@ -3,6 +3,7 @@ package com.thingk0.wauda.domain;
 import com.thingk0.wauda.domain.base.BaseEntity;
 import com.thingk0.wauda.domain.constant.Category;
 import com.thingk0.wauda.domain.constant.PartyStatus;
+import com.thingk0.wauda.dto.party.PartyForm;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,11 +33,22 @@ public class Party extends BaseEntity {
     @Lob
     private String content;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "party_owner")
     private Member owner;
 
     @Column(name = "party_member_count")
     private int count;
+
+
+    public static Party create(PartyForm partyForm, Member member) {
+        return Party.builder()
+                .name(partyForm.getName())
+                .category(partyForm.getCategory())
+                .partyStatus(PartyStatus.RECRUITING)
+                .content(partyForm.getContent())
+                .owner(member)
+                .build();
+    }
 
 }
