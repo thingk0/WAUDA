@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,6 +17,7 @@ public class PartyListDto {
     private String name;
     private Category category;
     private PartyStatus partyStatus;
+    private LocalDateTime createAt;
     private int count;
 
 }

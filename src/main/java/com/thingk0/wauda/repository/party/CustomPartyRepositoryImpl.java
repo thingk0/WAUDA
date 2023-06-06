@@ -31,9 +31,11 @@ public class CustomPartyRepositoryImpl implements CustomPartyRepository {
                         party.name.as("name"),
                         party.category.as("category"),
                         party.partyStatus.as("partyStatus"),
+                        party.createdAt.as("createdAt"),
                         party.count.as("count")))
                 .from(party)
                 .where(builder)
+                .orderBy(party.createdAt.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
