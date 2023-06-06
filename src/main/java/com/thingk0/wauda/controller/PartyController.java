@@ -1,13 +1,10 @@
 package com.thingk0.wauda.controller;
 
 import com.thingk0.wauda.dto.party.PartyForm;
-import com.thingk0.wauda.dto.party.PartyListDto;
 import com.thingk0.wauda.service.PartyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,21 +22,6 @@ import java.util.stream.Collectors;
 public class PartyController {
 
     private final PartyService partyService;
-
-
-    @GetMapping
-    public String getPartyList(@RequestParam(value = "search", required = false) String search,
-                               Pageable pageable, Model model) {
-
-        Page<PartyListDto> partyList = partyService.getPartyList(search, pageable);
-        model.addAttribute("showHeader", true);
-        model.addAttribute("parties", partyList.getContent());
-        model.addAttribute("page", partyList);
-        model.addAttribute("search", search);
-
-        return "home";
-    }
-
 
     @GetMapping(value = "/create")
     public String getPartyCreateForm(Model model) {
