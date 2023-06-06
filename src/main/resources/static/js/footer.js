@@ -1,8 +1,9 @@
 let buttons = document.querySelectorAll('.footer-btn');
 
-function changeButtonStyle(index) {
+function changeButtonStyle() {
+    let currentUrl = window.location.pathname;
     buttons.forEach((btn, idx) => {
-        if (idx === index) {
+        if (btn.dataset.url === currentUrl) {
             btn.classList.add('button-blue');
             btn.classList.add('button-border');
         } else {
@@ -10,12 +11,11 @@ function changeButtonStyle(index) {
             btn.classList.remove('button-border');
         }
     });
-    localStorage.setItem('selectedButtonIndex', index);
+    localStorage.setItem('selectedButtonIndex', currentUrl);
 }
 
 function setSelectedButtonColor() {
-    let buttonIndex = Number(localStorage.getItem('selectedButtonIndex')) || 0;
-    changeButtonStyle(buttonIndex);
+    changeButtonStyle();
 }
 
 document.addEventListener('DOMContentLoaded', setSelectedButtonColor);
@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', setSelectedButtonColor);
 buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
         let url = button.dataset.url;
-        changeButtonStyle(index);
         window.location.href = url;
     });
 });
