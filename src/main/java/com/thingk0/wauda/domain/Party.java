@@ -48,6 +48,7 @@ public class Party extends BaseEntity {
                 .partyStatus(PartyStatus.RECRUITING)
                 .content(partyForm.getContent())
                 .owner(member)
+                .count(partyForm.getMemberCnt())
                 .build();
     }
 

@@ -24,7 +24,9 @@ public class PartyService {
     }
 
     public Long create(PartyForm partyForm, String email) {
-        return partyRepository.save(Party.create(partyForm, memberService.findMemberByEmail(email))).getId();
+        return partyRepository.save(
+                Party.create(partyForm, memberService.findMemberByEmail(email)))
+                .getId();
     }
 
 }

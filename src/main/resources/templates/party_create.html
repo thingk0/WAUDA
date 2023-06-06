@@ -23,7 +23,6 @@
                                             th:selected="${category == '택시팟'}"></option>
                                 </select>
                             </div>
-
                             <p th:if="${#fields.hasErrors('category')}" th:errors="*{category}" class="error">Category Error</p>
                         </div>
 
@@ -43,8 +42,17 @@
                             <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="error">Content Error</p>
                         </div>
 
+                        <div class="form-group py-2">
+                            <label class="small" for="memberCnt">멤버 수</label>
+                            <div class="input-group mb-2">
+                                <input type="number" th:field="*{memberCnt}" id="memberCnt" class="form-control" value="1">
+                            </div>
+                            <p th:if="${#fields.hasErrors('memberCnt')}" th:errors="*{memberCnt}" class="error">Member Count Error</p>
+                        </div>
+
+
                         <div class="text-center py-3">
-                            <input type="submit" value="완료" class="btn btn-outline-success btn-block rounded-2 py-2" style="width: 60%;">
+                            <input type="submit" value="완료" class="btn btn-primary btn-block rounded-2 py-2" style="width: 60%;">
                         </div>
                     </div>
                 </div>
