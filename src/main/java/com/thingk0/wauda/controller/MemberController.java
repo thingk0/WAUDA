@@ -28,6 +28,10 @@ public class MemberController {
                         HttpServletRequest request,
                         Model model) {
 
+        if (request.getUserPrincipal() != null) {
+            return "redirect:/";
+        }
+
         if (errorMessage != null) {
             model.addAttribute("errorMessage", errorMessage);
             request.getSession().removeAttribute("errorMessage");
@@ -36,6 +40,7 @@ public class MemberController {
 
         return "login";
     }
+
 
 
     @GetMapping(value = "/signup")
