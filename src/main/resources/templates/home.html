@@ -4,18 +4,18 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layouts/layout}">
 
-<div layout:fragment="content" class="container my-3">
-  <div th:if="${parties}" th:each="party : ${parties}" class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title" th:text="${party.name}"></h5>
-      <p class="card-text">
-        Category: <span th:text="${party.category}"></span><br/>
-        Status: <span th:text="${party.partyStatus}"></span><br/>
-        Count: <span th:text="${party.count}"></span>
-      </p>
+    <div layout:fragment="content" class="container my-3">
+        <div th:if="${parties}" th:each="party : ${parties}"
+           class="card mb-3 d-flex flex-row shadow-sm rounded">
+            <div class="card-body">
+              <h5 class="card-title" th:text="${party.name}" style="font-size: 1em"></h5>
+              <p class="card-text">
+        <!--        Category: <span th:text="${party.category}"></span><br/>-->
+        <!--        Status: <span th:text="${party.partyStatus}"></span><br/>-->
+        <!--        Count: <span th:text="${party.count}"></span>-->
+              </p>
+            </div>
+        </div>
+        <div class="card-footer mb-5" style="visibility: hidden;"></div>
     </div>
-  </div>
-  <div class="card-footer mb-5"></div>
-</div>
-
 </html>
