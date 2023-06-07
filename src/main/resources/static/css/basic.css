@@ -90,7 +90,10 @@ footer {
     border-radius: 50%;
 }
 
-
+.closed {
+    pointer-events: none;
+    opacity: 0.5;
+}
 
 
 
