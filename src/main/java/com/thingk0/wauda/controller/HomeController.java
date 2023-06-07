@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(value = "/")
-public class MainController {
+public class HomeController {
 
     private final PartyService partyService;
 

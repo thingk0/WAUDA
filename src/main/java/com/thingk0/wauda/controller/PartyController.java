@@ -54,7 +54,7 @@ public class PartyController {
         Long savedPartyId = partyService.create(partyForm, email);
 
         log.info("파티 생성 id : " + savedPartyId);
-        return "redirect:/party";
+        return "redirect:/";
     }
 
 

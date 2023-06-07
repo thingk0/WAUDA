@@ -34,7 +34,7 @@ public class HttpSecurityConfig extends WebSecurityConfigurerAdapter {
                     .logoutSuccessUrl("/")
                     .and()
                 .authorizeRequests()
-                    .antMatchers("/").permitAll()
+                    .antMatchers("/", "/members/signup").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .httpBasic()

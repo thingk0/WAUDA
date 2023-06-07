@@ -15,7 +15,7 @@ public class PartyForm {
     @NotNull(message = "카테고리를 선택해주세요.")
     private Category category;
 
-    @Size(min = 3, max = 15, message = "이름은 3-15자 사이로 입력해주세요.")
+    @Size(min = 3, max = 20, message = "이름은 3-20자 사이로 입력해주세요.")
     @NotEmpty(message = "파티 이름을 입력해주세요.")
     private String name;
 
