@@ -15,6 +15,7 @@ public class PartyListDto {
 
     private Long id;
     private String name;
+    private String owner;
     private Category category;
     private PartyStatus partyStatus;
     private LocalDateTime createAt;

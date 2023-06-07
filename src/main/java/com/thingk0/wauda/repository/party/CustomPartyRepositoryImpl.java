@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import static com.thingk0.wauda.domain.QParty.party;
+import static com.thingk0.wauda.domain.QMember.member;
 
 @RequiredArgsConstructor
 public class CustomPartyRepositoryImpl implements CustomPartyRepository {
@@ -29,11 +30,13 @@ public class CustomPartyRepositoryImpl implements CustomPartyRepository {
                 .select(Projections.constructor(PartyListDto.class,
                         party.id.as("id"),
                         party.name.as("name"),
+                        member.nickname.as("owner"),
                         party.category.as("category"),
                         party.partyStatus.as("partyStatus"),
                         party.createdAt.as("createdAt"),
                         party.count.as("count")))
                 .from(party)
+                .leftJoin(party.owner, member)
                 .where(builder)
                 .orderBy(party.createdAt.desc())
                 .offset(pageable.getOffset())
