@@ -18,7 +18,7 @@ public class PartyListDto {
     private String owner;
     private Category category;
     private PartyStatus partyStatus;
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
     private int count;
 
 }

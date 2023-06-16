@@ -13,6 +13,7 @@
                             <h3><i class="fa fa-envelope"></i> 파티 생성 </h3>
                         </div>
                     </div>
+                    <hr style="opacity: 0.2; margin-top: 0">
                     <div class="card-body p-3">
                         <div class="form-group py-2">
                             <label class="small" for="category">카테고리</label>
@@ -49,7 +50,6 @@
                             </div>
                             <p th:if="${#fields.hasErrors('memberCnt')}" th:errors="*{memberCnt}" class="error">Member Count Error</p>
                         </div>
-
 
                         <div class="text-center py-3">
                             <input type="submit" value="완료" class="btn btn-primary btn-block rounded-2 py-2" style="width: 60%;">

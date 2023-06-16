@@ -7,24 +7,28 @@
     <div th:if="${parties}" th:each="party : ${parties}"
          th:classappend="${party.partyStatus.name() == 'CLOSED'} ? 'closed' : ''"
          class="card mb-3 d-flex flex-row shadow-sm rounded">
-
         <div class="card-body" style="padding-bottom: 0;">
             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px">
                 <span th:text="|[${party.category.getValue()}] : ${party.owner}|"
                       style="margin-right: 0.5em; font-size: 0.8em; color: gray"></span>
-                <!-- 오늘 생성된 파티일 경우 생성 시각만 표시 -->
-                <span class="text-muted small"
-                      th:if="${#temporals.format(party.createAt, 'yyyy-MM-dd') == #temporals.format(#temporals.createNow(), 'yyyy-MM-dd')}"
-                      th:text="${#temporals.format(party.createAt, 'HH:mm')}"></span>
-                <!-- 오늘 생성되지 않은 파티일 경우 생성 날짜만 표시 -->
-                <span class="text-muted small"
-                      th:unless="${#temporals.format(party.createAt, 'yyyy-MM-dd') == #temporals.format(#temporals.createNow(), 'yyyy-MM-dd')}"
-                      th:text="${#temporals.format(party.createAt, 'MM월 dd일')}" style="font-size: 0.6em"></span>
-            </div>
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px">
-                <h5 class="card-title" th:text="${party.name}" style="font-size: 1.1em; margin: 0; line-height: 1;"></h5>
-            </div>
-            <hr style="margin-top: 30px; margin-bottom: 0; opacity: 0.1;">
+                    <!-- 오늘 생성된 파티일 경우 생성 시각만 표시 -->
+                    <span class="text-muted small"
+                          th:if="${#temporals.format(party.createdAt, 'yyyy-MM-dd') == #temporals.format(#temporals.createNow(), 'yyyy-MM-dd')}"
+                          th:text="${#temporals.format(party.createdAt, 'HH:mm')}"></span>
+                    <!-- 오늘 생성되지 않은 파티일 경우 생성 날짜만 표시 -->
+                    <span class="text-muted small"
+                          th:unless="${#temporals.format(party.createdAt, 'yyyy-MM-dd') == #temporals.format(#temporals.createNow(), 'yyyy-MM-dd')}"
+                          th:text="${#temporals.format(party.createdAt, 'MM월 dd일')}" style="font-size: 0.6em"></span>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px">
+                    <h5 class="card-title" th:text="${party.name}" style="font-size: 1.1em; margin: 0; line-height: 1;"></h5>
+                </div>
+                <span class="border rounded mx-0 px-1" style="display: inline-block;">
+                <img th:each="i : ${#numbers.sequence(1, party.count)}"
+                     th:src="@{/img/party-member.svg}" alt="member" style="width: 10px; height: 10px; opacity: 0.2">
+            </span>
+            </a>
+            <hr style="margin-top: 10px; margin-bottom: 0; opacity: 0.1;">
             <div style="display: flex; align-items: center; justify-content: space-between;">
                 <div></div>
                 <a href="#" class="btn btn-sm" style="font-size: 0.5em; color: gray">좋아요</a>
