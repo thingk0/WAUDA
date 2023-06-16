@@ -1,5 +1,16 @@
 <footer th:fragment="footer" class="border-top">
   <div class="container">
+    <div th:if="${commentEnabled}" class="pb-4 pt-2">
+      <form id="myForm" action="#" method="post">
+        <div class="custom-input-form">
+          <input type="text" id="customInput" name="customInput">
+          <button type="submit" id="submitButton">
+            <img th:src="@{/img/submit.svg}" alt="submit"
+                 style="width: 20px; height: 20px; opacity: 30%">
+          </button>
+        </div>
+      </form>
+    </div>
     <div class="row">
       <div class="col-md-12">
         <div class="footer-btn-container">
@@ -13,7 +24,7 @@
           <!-- 파티 버튼 -->
           <button class="btn footer-btn"><img th:src="@{/img/users.svg}" alt="party" style="width: 24px; height: 24px;"></button>
           <!-- 프로필 버튼 -->
-          <button class="btn footer-btn" data-url="/members/login"><img th:src="@{/img/user.svg}" alt="profile" style="width: 24px; height: 24px;"></button>
+          <button class="btn footer-btn" data-url="/members/profile"><img th:src="@{/img/user.svg}" alt="profile" style="width: 24px; height: 24px;"></button>
           <div></div>
         </div>
       </div>
