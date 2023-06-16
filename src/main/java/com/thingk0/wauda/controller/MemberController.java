@@ -1,5 +1,6 @@
 package com.thingk0.wauda.controller;
 
+import com.thingk0.wauda.dto.member.Profile;
 import com.thingk0.wauda.dto.register.RegisterDto;
 import com.thingk0.wauda.dto.register.RegisterForm;
 import com.thingk0.wauda.service.MemberService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -29,7 +31,7 @@ public class MemberController {
                         Model model) {
 
         if (request.getUserPrincipal() != null) {
-            return "redirect:/";
+            return "redirect:/members/profile";
         }
 
         if (errorMessage != null) {
@@ -81,4 +83,21 @@ public class MemberController {
         log.info("회원가입");
         return "redirect:/members/login";
     }
+
+    @GetMapping(value = "/profile")
+    public String profile(HttpServletRequest request, Model model) {
+        Principal principal = request.getUserPrincipal();
+        if (principal == null) {
+            return "redirect:/members/login";
+        }
+        try {
+            Profile profile = memberService.getProfile(principal.getName());
+            model.addAttribute("profile", profile);
+        } catch (ProfileNotFoundException e) {
+            return "redirect:/members/login";
+        }
+
+        return "profile";
+    }
+
 }
