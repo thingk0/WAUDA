@@ -8,7 +8,8 @@
          th:classappend="${party.partyStatus.name() == 'CLOSED'} ? 'closed' : ''"
          class="card mb-3 d-flex flex-row shadow-sm rounded">
         <div class="card-body" style="padding-bottom: 0;">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px">
+            <a th:href="@{/party/{id}(id=${party.id})}" style="color: inherit; text-decoration: none;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px">
                 <span th:text="|[${party.category.getValue()}] : ${party.owner}|"
                       style="margin-right: 0.5em; font-size: 0.8em; color: gray"></span>
                     <!-- 오늘 생성된 파티일 경우 생성 시각만 표시 -->

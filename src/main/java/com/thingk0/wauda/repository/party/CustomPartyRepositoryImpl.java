@@ -5,6 +5,7 @@ import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.thingk0.wauda.dto.party.PartyListDto;
+import com.thingk0.wauda.dto.party.PartyResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -19,7 +20,7 @@ public class CustomPartyRepositoryImpl implements CustomPartyRepository {
     private final JPAQueryFactory query;
 
     @Override
-    public Page<PartyListDto> partyListBySearchCond(String searchCond, Pageable pageable) {
+    public Page<PartyListDto> partyList(String searchCond, Pageable pageable) {
 
         BooleanBuilder builder = new BooleanBuilder();
         if (searchCond != null && !searchCond.trim().isEmpty()) {
@@ -44,6 +45,24 @@ public class CustomPartyRepositoryImpl implements CustomPartyRepository {
                 .fetchResults();
 
         return new PageImpl<>(results.getResults(), pageable, results.getTotal());
+    }
+
+    @Override
+    public PartyResponseDto partyDetail(Long party_id) {
+        return query
+                .select(Projections.constructor(PartyResponseDto.class,
+                        party.id.as("id"),
+                        party.name.as("name"),
+                        party.category.as("category"),
+                        party.content.as("content"),
+                        member.nickname.as("owner"),
+                        party.createdAt.as("createdAt"),
+                        party.modifiedAt.as("modifiedAt"),
+                        party.count.as("count")))
+                .from(party)
+                .leftJoin(party.owner, member)
+                .where(party.id.eq(party_id))
+                .fetchOne();
     }
 }
 

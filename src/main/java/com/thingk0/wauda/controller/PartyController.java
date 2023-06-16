@@ -23,6 +23,14 @@ public class PartyController {
 
     private final PartyService partyService;
 
+    @GetMapping(value = "/{id}")
+    public String getPartyDetail(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("detail", partyService.getPartyDetail(id));
+        model.addAttribute("commentEnabled", "commentEnabled");
+        return "party_detail";
+    }
+
+
     @GetMapping(value = "/create")
     public String getPartyCreateForm(Model model) {
         model.addAttribute("partyForm", new PartyForm());
