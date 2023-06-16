@@ -3,6 +3,8 @@ package com.thingk0.wauda.controller;
 import com.thingk0.wauda.dto.member.Profile;
 import com.thingk0.wauda.dto.register.RegisterDto;
 import com.thingk0.wauda.dto.register.RegisterForm;
+import com.thingk0.wauda.exception.EmailAlreadyExistsException;
+import com.thingk0.wauda.exception.ProfileNotFoundException;
 import com.thingk0.wauda.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +46,6 @@ public class MemberController {
     }
 
 
-
     @GetMapping(value = "/signup")
     public String register(Model model) {
         model.addAttribute("registerForm", new RegisterForm());
@@ -73,12 +74,17 @@ public class MemberController {
             return "signup";
         }
 
-        // 새 회원 정보를 등록
-        memberService.register(new RegisterDto(
-                registerForm.getEmail(),
-                registerForm.getPassword(),
-                registerForm.getNickname()
-        ));
+        try {
+            // 새 회원 정보를 등록
+            memberService.register(new RegisterDto(
+                    registerForm.getEmail(),
+                    registerForm.getPassword(),
+                    registerForm.getNickname()));
+        } catch (EmailAlreadyExistsException e) {
+            log.error(e.getMessage());
+            model.addAttribute("emailError", "이미 존재하는 이메일입니다.");
+            return "signup";
+        }
 
         log.info("회원가입");
         return "redirect:/members/login";

@@ -7,10 +7,11 @@ import javax.validation.constraints.*;
 @Data
 public class RegisterForm {
 
+    private static final String EMAIL_PATTERN = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
     private static final String PASSWORD_PATTERN = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$";
     private static final String PASSWORD_MESSAGE = "비밀번호는 최소 8자, 최소 하나의 알파벳, 숫자, 특수문자를 포함해야 합니다.";
 
-    @Email(message = "올바른 이메일 형식으로 작성해주세요.")
+    @Pattern(regexp = EMAIL_PATTERN, message = "올바른 이메일 형식으로 작성해주세요.")
     @NotEmpty(message = "이메일을 입력해주세요.")
     private String email;
 
