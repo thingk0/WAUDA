@@ -84,12 +84,6 @@ footer {
     color: red;
 }
 
-.button-border {
-    border: 2px solid blue;
-    box-sizing: border-box;
-    border-radius: 50%;
-}
-
 .closed {
     pointer-events: none;
     opacity: 0.5;

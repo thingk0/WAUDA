@@ -4,23 +4,29 @@
       layout:decorate="~{layouts/layout}">
 
 <div layout:fragment="content" class="container py-3">
-    <button class="btn btn-link px-0" onclick="window.history.back()"><img th:src="@{/img/back-btn.svg}" alt="back" style="width: 30px; height: 30px;"></button>
+    <button class="btn btn-link px-0" onclick="window.location.href='/'">
+        <img th:src="@{/img/back-btn.svg}" alt="back" style="width: 30px; height: 30px;"></button>
     <div class="card mb-3 d-flex flex-row shadow-sm rounded">
-        <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted" th:text="${detail.category}" style="font-size: 0.8em"></h6>
-            <h5 class="card-title" th:text="${detail.name}" style="font-size: 1.5em;"></h5>
-            <hr>
-            <p class="card-text" th:text="${detail.content}"></p>
-            <hr>
-            <p class="card-text">
-                <small class="text-muted">Created by <span th:text="${detail.owner}"></span> on <span th:text="${#temporals.format(detail.createdAt, 'yyyy-MM-dd HH:mm')}"></span></small>
-            </p>
-            <p class="card-text">
-                <small class="text-muted">Last updated on <span th:text="${#temporals.format(detail.modifiedAt, 'yyyy-MM-dd HH:mm')}"></span></small>
-            </p>
-            <p class="card-text">
-                <small class="text-muted">Party count: <span th:text="${detail.count}"></span></small>
-            </p>
+        <div class="card-body pb-0">
+            <img th:src="@{/img/default-profile.png}" alt="profile" style="padding-left: 0">
+            <span class="small" th:text="${party.owner}"></span>
+            <small class="text-muted" style="font-size: 0.6em; padding-left: 10px">
+                <span th:text="${#temporals.format(party.createdAt, 'MM/dd HH:mm')}"></span>
+            </small>
+            <h6 class="card-title" th:text="${party.name}" style="font-size: 1.5em;"></h6>
+            <div style="display: flex; align-items: center;"></div>
+            <p class="card-text" th:text="${party.content}"></p>
+            <span class="border rounded mx-0 px-1" style="display: inline-block;">
+                <img th:each="i : ${#numbers.sequence(1, party.count)}" th:src="@{/img/party-member.svg}" alt="member" style="width: 10px; height: 10px; opacity: 0.2">
+            </span>
+            <hr style="margin-top: 10px; margin-bottom: 0; opacity: 0.1;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+                <div></div>
+                <a href="#" class="btn btn-sm" style="font-size: 0.5em; color: gray">파티신청</a>
+                <div></div>
+                <a href="#" class="btn btn-sm" style="font-size: 0.5em; color: gray">신고하기</a>
+                <div></div>
+            </div>
         </div>
     </div>
     <div class="card mb-3 d-flex flex-row shadow-sm rounded">
@@ -28,5 +34,6 @@
             Comments List
         </div>
     </div>
+    <div class="card-footer" style="visibility: hidden; margin-bottom: 110px"></div>
 </div>
 </html>

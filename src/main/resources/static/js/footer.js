@@ -13,10 +13,8 @@ function changeButtonStyle() {
             (memberPattern.test(currentUrl) && idx == 4) ||
             (partyPattern.test(currentUrl) && idx === 0)) {
             btn.classList.add('button-blue');
-            btn.classList.add('button-border');
         } else {
             btn.classList.remove('button-blue');
-            btn.classList.remove('button-border');
         }
     });
     localStorage.setItem('selectedButtonIndex', currentUrl);
@@ -37,15 +35,13 @@ buttons.forEach((button, index) => {
 
 
 document.querySelector('.custom-input-form input').addEventListener('focus', function() {
-    const imgElem = document.querySelector('.custom-input-form button img');
+    const imgElem = document.querySelector('.custom-input-form button img#submitButton');
     imgElem.style.opacity = "1";
     imgElem.style.filter = "invert(20%) sepia(100%) saturate(10000%) hue-rotate(210deg)";
 });
 
-
 document.querySelector('.custom-input-form input').addEventListener('blur', function() {
-    const imgElem = document.querySelector('.custom-input-form button img');
+    const imgElem = document.querySelector('.custom-input-form button img#submitButton');
     imgElem.style.opacity = "0.3";
-    imgElem.style.filter = "";  // 필요한 기본 필터 스타일로 변경하세요
+    imgElem.style.filter = "";
 });
-
