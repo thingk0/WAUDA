@@ -5,7 +5,7 @@ import com.thingk0.wauda.domain.Party;
 import com.thingk0.wauda.domain.PartyMember;
 import com.thingk0.wauda.domain.constant.Category;
 import com.thingk0.wauda.domain.constant.PartyStatus;
-import com.thingk0.wauda.repository.CommentRepository;
+import com.thingk0.wauda.repository.CommentsRepository;
 import com.thingk0.wauda.repository.MemberRepository;
 import com.thingk0.wauda.repository.PartyMemberRepository;
 import com.thingk0.wauda.repository.PartyRepository;
@@ -40,7 +40,7 @@ class WaudaApplicationTests {
     PartyMemberRepository partyMemberRepository;
 
     @Autowired
-    CommentRepository commentRepository;
+    CommentsRepository commentsRepository;
 
     @Test
     void contextLoads() {

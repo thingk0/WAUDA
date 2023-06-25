@@ -1,0 +1,22 @@
+<div th:fragment="commentForm (commentEnabled, commentsForm, party)">
+  <div th:if="${commentEnabled}" class="py-2">
+    <form action="#" th:action="@{/comments}" th:object="${commentsForm}" method="post">
+      <div class="custom-input-form" style="display: flex; flex-direction: column;">
+        <input type="hidden" name="partyId" th:value="${party.id != null ? party.id.toString() : ''}">
+        <input type="text" th:field="*{comment}" id="comment" name="comment" style="height: 35px; padding: 5px">
+        <button type="submit" style="align-self: flex-end; margin: 4px">
+          <img th:src="@{/img/submit.svg}" alt="submit" id="submitButton"
+               style="width: 18px; height: 18px; opacity: 30%;">
+        </button>
+      </div>
+    </form>
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      const commentsError = [[${commentsError}]];
+      if (commentsError != null && commentsError != "") {
+        alert(commentsError);
+      }
+      /*]]>*/
+    </script>
+  </div>
+</div>

@@ -1,6 +1,8 @@
 package com.thingk0.wauda.controller;
 
+import com.thingk0.wauda.dto.comments.CommentsForm;
 import com.thingk0.wauda.dto.party.PartyForm;
+import com.thingk0.wauda.service.CommentsService;
 import com.thingk0.wauda.service.PartyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,11 +24,19 @@ import java.util.stream.Collectors;
 public class PartyController {
 
     private final PartyService partyService;
+    private final CommentsService commentsService;
+
 
     @GetMapping(value = "/{id}")
-    public String getPartyDetail(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("detail", partyService.getPartyDetail(id));
+    public String getPartyDetail(@PathVariable("id") Long id, Model model,
+                                 @ModelAttribute("commentsError") String commentsError) {
+
+        model.addAttribute("commentsError", commentsError);
+        model.addAttribute("commentsForm", new CommentsForm());
         model.addAttribute("commentEnabled", "commentEnabled");
+
+        model.addAttribute("party", partyService.getPartyDetail(id));
+        model.addAttribute("commentsList", commentsService.getCommentsList(id));
         return "party_detail";
     }
 
