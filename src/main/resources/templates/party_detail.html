@@ -29,9 +29,25 @@
             </div>
         </div>
     </div>
-    <div class="card mb-3 d-flex flex-row shadow-sm rounded">
-        <div class="card-body">
-            Comments List
+    <hr>
+    <div th:if="${commentsList}" th:each="comments : ${commentsList}"
+         class="card mb-3 d-flex flex-row shadow-sm rounded rounded-3">
+        <div class="card-body p-3">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px">
+                <span>
+                    <img th:src="@{/img/default-profile.png}" alt="profile" style="padding-left: 0">
+                    <span th:text="${comments.nickname}" style="margin-right: 0.5em; font-size: 0.8em; color: gray"></span>
+                </span>
+                <!-- 오늘 생성된 댓글일 경우 생성 시각만 표시 -->
+                <span class="text-muted small" style="font-size: 0.5em"
+                      th:if="${#temporals.format(comments.createdAt, 'yyyy-MM-dd') == #temporals.format(#temporals.createNow(), 'yyyy-MM-dd')}"
+                      th:text="${#temporals.format(comments.createdAt, 'HH:mm')}"></span>
+                <!-- 오늘 생성되지 않은 댓글일 경우 생성 날짜만 표시 -->
+                <span class="text-muted small" style="font-size: 0.4em"
+                      th:unless="${#temporals.format(comments.createdAt, 'yyyy-MM-dd') == #temporals.format(#temporals.createNow(), 'yyyy-MM-dd')}"
+                      th:text="${#temporals.format(comments.createdAt, 'MM월 dd일')}"></span>
+            </div>
+            <p class="card-text small" th:text="${comments.content}"></p>
         </div>
     </div>
     <div class="card-footer" style="visibility: hidden; margin-bottom: 110px"></div>
